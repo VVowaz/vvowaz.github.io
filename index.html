@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Страница студента</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            text-align: center;
+        }
+        img {
+            width: 200px;
+            height: auto;
+            border: 1px solid #ccc;
+            margin: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Привет, я страница студента группы АДБ-22-06 Зиновьева Владимира</h1>
+	<h2>Моя задача показать вам моего кота</h2>
+    <img src="cat.jpg" alt="Картинка кота">
+    <div id="time">
+        <p>И продемонстрировать работу с данными которые мне нужно получить откуда-то из интернета</p>
+		<p>Но так как получение данных со станка почему-то запрещено, я получу просто время</p>
+        <button onclick="fetchTime()">Получить время</button>
+        <div id="currentTime"></div>
+    </div>
+    <script>
+        function fetchTime() {
+            fetch('https://worldtimeapi.org/api/timezone/Europe/Moscow')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('currentTime').innerHTML = 
+                        '<p>Текущее время (МСК): ' + data.datetime.slice(0, 19).replace('T', ' ') + '</p>';
+                })
+                .catch(error => {
+                    console.error('Ошибка:', error);
+                    document.getElementById('currentTime').innerHTML = '<p>Не удалось получить время.</p>';
+                });
+        }
+    </script>
+</body>
+</html>
