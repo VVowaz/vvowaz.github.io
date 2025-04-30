@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Резюме Ивана Петрова | Fullstack разработчик</title>
+    <style>
+        /* Базовые стили и переменные */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --text-color: #333;
+            --light-bg: #f9f9f9;
+            --spacing: 2rem;
+            --border-radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        /* Секции */
+        section {
+            padding: var(--spacing) 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Шапка профиля */
+        .profile-header {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .profile-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Карточки опыта */
+        .experience-item {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .experience-item:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Сетка навыков */
+        .skills-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        /* Форма обратной связи */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+        }
+
+        button {
+            background: var(--secondary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .profile-header h1 {
+                font-size: 2rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка профиля -->
+    <header class="profile-header">
+        <h1>Иван Петров</h1>
+        <p>Fullstack разработчик</p>
+        <p class="profile-description">Специалист с 5-летним опытом разработки веб-приложений</p>
+        <div class="header-buttons">
+            <button onclick="window.open('#', '_blank')">Скачать резюме</button>
+            <button onclick="scrollToSection('contact')">Связаться со мной</button>
+        </div>
+    </header>
+
+    <!-- Основные секции -->
+    <main>
+        <section id="experience">
+            <h2>Опыт работы</h2>
+            <div class="experience-item">
+                <h3>Ведущий разработчик</h3>
+                <p>Tech Corp (2019-настоящее время)</p>
+                <ul>
+                    <li>Разработка архитектуры веб-приложений</li>
+                    <li>Управление командой разработчиков</li>
+                </ul>
+            </div>
+            <!-- Другие места работы -->
+        </section>
+
+        <section id="education">
+            <h2>Образование</h2>
+            <div class="experience-item">
+                <h3>Московский Технический Университет</h3>
+                <p>Компьютерные науки (2014-2018)</p>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Навыки</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Технические</h3>
+                    <ul>
+                        <li>JavaScript/Node.js</li>
+                        <li>Python/Django</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Личные</h3>
+                    <ul>
+                        <li>Командная работа</li>
+                        <li>Тайм-менеджмент</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Форма обратной связи -->
+        <section id="contact">
+            <h2>Связаться со мной</h2>
+            <form class="contact-form" onsubmit="return validateForm(event)">
+                <input type="text" placeholder="Имя" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Сообщение" rows="5" required></textarea>
+                <button type="submit">Отправить</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        // Плавный скролл к секции
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Валидация формы
+        function validateForm(event) {
+            event.preventDefault();
+            const form = event.target;
+            if (form.checkValidity()) {
+                alert('Сообщение успешно отправлено!');
+                form.reset();
+                return true;
+            }
+            return false;
+        }
+
+        // Анимация секций при скролле
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 50px;
+            transition: background-color 0.3s;
+        }
+
+        /* Стилизация ползунка в виде стрелки */
+        #indicator::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 25px solid #555;
+            margin-top: -10px;
+        }
+
+        #indicator::-moz-range-thumb {
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 25px solid #555;
+        }
+
+        #indicator {
+            width: 300px;
+            height: 30px;
+            margin: 20px 0;
+        }
+
+        .keyboard {
+            display: flex;
+            gap: 10px;
+        }
+
+        .num-btn {
+            padding: 15px;
+            font-size: 18px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #f0f0f0;
+        }
+
+        .warning {
+            background-color: #ff4444 !important;
+        }
+    </style>
+</head>
+<body>
+    <input type="range" 
+           id="indicator" 
+           min="0" 
+           max="9" 
+           value="0" 
+           step="1"
+           disabled>
+
+    <div class="keyboard">
+        <button class="num-btn">0</button>
+        <button class="num-btn">1</button>
+        <button class="num-btn">2</button>
+        <button class="num-btn">3</button>
+        <button class="num-btn">4</button>
+        <button class="num-btn">5</button>
+        <button class="num-btn">6</button>
+        <button class="num-btn">7</button>
+        <button class="num-btn">8</button>
+        <button class="num-btn">9</button>
+    </div>
+
+    <script>
+        const indicator = document.getElementById('indicator');
+        const buttons = document.querySelectorAll('.num-btn');
+        
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const value = parseInt(btn.innerText);
+                indicator.value = value;
+                
+                // Меняем цвет фона при значениях больше 5
+                if(value > 5) {
+                    document.body.classList.add('warning');
+                } else {
+                    document.body.classList.remove('warning');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

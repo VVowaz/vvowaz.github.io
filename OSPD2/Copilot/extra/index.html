@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Индикатор</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: white;
+    }
+    .range-container {
+      margin: 20px auto;
+      width: 300px;
+    }
+    input[type="range"] {
+      width: 100%;
+    }
+    button {
+      margin: 5px;
+      padding: 10px;
+    }
+    .indicator {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Горизонтальный стрелочный индикатор</h1>
+  <div class="range-container">
+    <input type="range" id="range" min="0" max="9" value="0" disabled>
+    <div id="indicator" class="indicator">Текущее значение: 0</div>
+  </div>
+  <div id="keyboard">
+    <!-- Кнопки для значений 0–9 -->
+    <button onclick="updateIndicator(0)">0</button>
+    <button onclick="updateIndicator(1)">1</button>
+    <button onclick="updateIndicator(2)">2</button>
+    <button onclick="updateIndicator(3)">3</button>
+    <button onclick="updateIndicator(4)">4</button>
+    <button onclick="updateIndicator(5)">5</button>
+    <button onclick="updateIndicator(6)">6</button>
+    <button onclick="updateIndicator(7)">7</button>
+    <button onclick="updateIndicator(8)">8</button>
+    <button onclick="updateIndicator(9)">9</button>
+  </div>
+
+  <script>
+    function updateIndicator(value) {
+      const range = document.getElementById("range");
+      const indicator = document.getElementById("indicator");
+      
+      // Обновляем значение range и текстового индикатора
+      range.value = value;
+      indicator.textContent = `Текущее значение: ${value}`;
+      
+      // Изменяем цвет фона, если значение больше 5
+      if (value > 5) {
+        document.body.style.backgroundColor = "red";
+      } else {
+        document.body.style.backgroundColor = "white";
+      }
+    }
+  </script>
+</body>
+</html>

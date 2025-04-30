@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <!-- Обеспечивает корректное масштабирование на мобильных устройствах -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Личное резюме</title>
+  <style>
+    /* Глобальные стили */
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f4f4f4; /* светлый фон */
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    a {
+      color: #333;
+      text-decoration: none;
+    }
+    h1, h2, h3 {
+      margin-bottom: 0.5em;
+    }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    /* Стили для шапки страницы */
+    header {
+      background: #fff;
+      padding: 20px 0;
+      margin-bottom: 20px;
+    }
+    .header-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .header-buttons {
+      margin-top: 20px;
+      display: flex;
+      gap: 20px;
+    }
+    .btn {
+      padding: 10px 20px;
+      background-color: #0066cc;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #004999;
+    }
+
+    /* Общие стили для секций */
+    section {
+      background: #fff;
+      margin-bottom: 20px;
+      padding: 20px;
+      border-radius: 5px;
+      /* Начальное состояние для анимации */
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+    /* Класс для появления элементов при прокрутке */
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Сетка для секций "Опыт работы" и "Образование" */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .grid-item {
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-radius: 5px;
+    }
+
+    /* Стилизация контактной формы */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+    }
+    .contact-form label {
+      margin: 10px 0 5px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .contact-form button {
+      margin-top: 15px;
+    }
+
+    /* Адаптивная вёрстка для устройств с шириной экрана от 768px */
+    @media (min-width: 768px) {
+      .header-content {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+      .header-info {
+        flex: 1;
+      }
+      .header-buttons {
+        flex: 1;
+        justify-content: flex-end;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Шапка страницы с информацией о пользователе -->
+  <header id="home">
+    <div class="container header-content">
+      <!-- Блок с краткой информацией -->
+      <div class="header-info">
+        <h1>Иван Иванов</h1>
+        <h3>Frontend Developer</h3>
+        <p>Краткое описание: творческий, энергичный и целеустремленный специалист с опытом разработки веб-приложений.</p>
+      </div>
+      <!-- Блок с интерактивными кнопками -->
+      <div class="header-buttons">
+        <!-- Псевдо-ссылка для скачивания резюме -->
+        <button class="btn" id="downloadBtn">Скачать резюме</button>
+        <!-- Кнопка для плавного скролла к контактной форме -->
+        <button class="btn" id="contactBtn">Связаться со мной</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Секция "Опыт работы" -->
+  <section id="experience">
+    <div class="container">
+      <h2>Опыт работы</h2>
+      <div class="grid">
+        <!-- Пример рабочего опыта -->
+        <div class="grid-item">
+          <h3>Frontend Developer</h3>
+          <p><strong>Компания:</strong> ABC Tech</p>
+          <p><strong>Срок:</strong> Январь 2020 - настоящее время</p>
+          <p>Разработка и поддержка веб-приложений, участие в создании удобного пользовательского интерфейса.</p>
+        </div>
+        <div class="grid-item">
+          <h3>Junior Developer</h3>
+          <p><strong>Компания:</strong> Web Solutions</p>
+          <p><strong>Срок:</strong> Июль 2018 - Декабрь 2019</p>
+          <p>Участие в разработке корпоративного сайта, обеспечение адаптивной вёрстки и кроссбраузерности.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Секция "Образование" -->
+  <section id="education">
+    <div class="container">
+      <h2>Образование</h2>
+      <div class="grid">
+        <div class="grid-item">
+          <h3>Бакалавр компьютерных наук</h3>
+          <p><strong>Университет:</strong> Московский Государственный Университет</p>
+          <p><strong>Годы обучения:</strong> 2014 - 2018</p>
+        </div>
+        <div class="grid-item">
+          <h3>Курс по Frontend разработке</h3>
+          <p><strong>Учебное заведение:</strong> Онлайн-академия</p>
+          <p><strong>Годы обучения:</strong> 2019</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Секция "Навыки" -->
+  <section id="skills">
+    <div class="container">
+      <h2>Навыки</h2>
+      <ul>
+        <li>HTML5, CSS3, JavaScript</li>
+        <li>React, Vue</li>
+        <li>Адаптивная вёрстка (Flexbox, CSS Grid)</li>
+        <li>Git, GitHub</li>
+        <li>Креативное мышление</li>
+        <li>Эффективная коммуникация и работа в команде</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Секция "Контакты" с формой обратной связи -->
+  <section id="contact">
+    <div class="container">
+      <h2>Контакты</h2>
+      <form class="contact-form" id="contactForm">
+        <label for="name">Ваше имя:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">Ваш email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="message">Ваше сообщение:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+        
+        <button class="btn" type="submit">Отправить</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- JavaScript для интерактивных элементов -->
+  <script>
+    // Плавный скролл к секции "Контакты" при нажатии на кнопку "Связаться со мной"
+    document.getElementById('contactBtn').addEventListener('click', function() {
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Заглушка для кнопки "Скачать резюме"
+    document.getElementById('downloadBtn').addEventListener('click', function() {
+      // Здесь можно реализовать функционал скачивания PDF-файла с резюме
+      alert('Скачать резюме (функция пока не реализована)');
+    });
+
+    // Обработка отправки контактной формы с базовой валидацией
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // Отменяем стандартное действие формы
+      var name = document.getElementById('name').value.trim();
+      var email = document.getElementById('email').value.trim();
+      var message = document.getElementById('message').value.trim();
+      
+      if (name === '' || email === '' || message === '') {
+        alert('Пожалуйста, заполните все поля формы.');
+        return;
+      }
+      
+      // Здесь можно добавить отправку данных на сервер (например, через AJAX)
+      alert('Спасибо за ваше сообщение!');
+      document.getElementById('contactForm').reset();
+    });
+
+    // Функция для добавления класса "visible" к секциям при их появлении в зоне видимости
+    // Используем Intersection Observer API
+    const sections = document.querySelectorAll('section');
+    const observerOptions = {
+      threshold: 0.1
+    };
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); // Останавливаем наблюдение после появления
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>

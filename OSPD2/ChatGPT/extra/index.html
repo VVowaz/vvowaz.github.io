@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Стрелочный индикатор</title>
+  <style>
+    body {
+      transition: background-color 0.3s ease;
+    }
+    #indicator {
+      width: 100%;
+      max-width: 400px;
+      margin: 50px auto;
+      display: block;
+    }
+    #label {
+      text-align: center;
+      font-size: 24px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <input type="range" id="indicator" min="0" max="9" value="0" step="1" disabled>
+  <div id="label">Нажмите клавишу 0–9</div>
+
+  <script>
+    const indicator = document.getElementById('indicator');
+    const label = document.getElementById('label');
+
+    document.addEventListener('keydown', function(e) {
+      const key = e.key;
+      if (key >= '0' && key <= '9') {
+        const value = parseInt(key);
+        indicator.value = value;
+        label.textContent = 'Выбрано: ' + value;
+
+        if (value > 5) {
+          document.body.style.backgroundColor = 'red';
+        } else {
+          document.body.style.backgroundColor = '';
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
