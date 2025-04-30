@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мое Резюме</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="resume-container">
+        <header>
+            <h1>Резюме</h1>
+        </header>
+
+        <section class="personal-info">
+            <img id="profile-pic" src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/64/6408c348ecb88b377ca6cbeee6687ff6a7f2d5cd_full.jpg" alt="Мое фото">
+
+            <p>Имя: <span class="name">Владимир</span></p>
+            <p>Фамилия: <span id="surname">Зиновьев</span></p>
+        </section>
+
+        <section class="interaction">
+            <h2>Изменить Фамилию</h2>
+            <input type="text" id="new-surname-input" placeholder="Введите новую фамилию">
+            <button id="change-surname-btn">Изменить Фамилию</button>
+        </section>
+
+        <section class="extra-features">
+             <h2>Дополнительно</h2>
+             <button id="change-bg-btn">Случайный фон</button>
+        </section>
+
+        <footer>
+            <p>Краткая информация: Начинающий веб-разработчик.</p>
+        </footer>
+
+    </div> 
+
+    <script src="script.js"></script>
+</body>
+</html>
